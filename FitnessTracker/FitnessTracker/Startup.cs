@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FitnessTracker.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,12 +15,16 @@ namespace FitnessTracker
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Configuration = configuration;
+            this.HostingEnvironment = env;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
+
+        public IHostingEnvironment HostingEnvironment { get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -28,10 +33,18 @@ namespace FitnessTracker
                 opts.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             });
 
+            services.AddOptions();
+            services.Configure<CosmosDB>(Configuration.GetSection("CosmosDB"));
+
+            services.AddSingleton<IDocDbRepository<Excercise>, DocDbRepository<Excercise>>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Fitness Tracker", Version = "v1" });
+                c.DescribeAllEnumsAsStrings();
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
