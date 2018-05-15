@@ -1,0 +1,56 @@
+<!--
+============================================================================
+	File:		5 - caching.xml
+
+	Summary:	This XML demonstrates applied policy for sending a request. The URL is
+                is taken out from the Named Values section and has to be stored with key
+                "DevBgLogicApp". The outcome would be twitted on my personal twitter.
+                This code sample is supposed to be used with the Conference API, and 
+                the "GetTopicSpeakers" operation which is currenly available on:
+                http://conferenceapi.azurewebsites.net/?format=json
+
+				THIS SCRIPT IS PART OF LECTURE: 
+				Head first Azure API Management, Dev.bg, .NET Group
+
+	Date:		16.05.2018
+
+------------------------------------------------------------------------------
+	Written by Dimitar Mitev, Senior Developer
+
+	This script is intended only as a supplement to demos and lectures
+	given by Dimitar Mitev.  
+  
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF 
+	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED 
+	TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+============================================================================
+-->
+<policies>
+    <inbound>
+        <base />
+        <send-request mode="new" response-variable-name="devbg" ignore-error="true">
+            <set-url>{{DevBgLogicApp}}</set-url>
+            <set-method>POST</set-method>
+            <set-header name="Accept" exists-action="override">
+                <value>application/json</value>
+            </set-header>
+            <set-header name="Content-Type" exists-action="override">
+                <value>application/json</value>
+            </set-header>
+            <set-header name="DEV-BG" exists-action="append">
+                <value>Azure APIM Rocks</value>
+            </set-header>
+            <set-body>"Are you already feeling almighty? 💪🦉😍🍻🍺 #devbg #awesome"</set-body>
+        </send-request>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

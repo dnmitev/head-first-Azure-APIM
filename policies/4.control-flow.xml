@@ -1,0 +1,56 @@
+<!--
+============================================================================
+	File:		4 - control-flow.xml
+
+	Summary:	This XML demonstrates applied outbound policy to remove specified parts 
+                of the response JSON. This code sample is supposed to be used with the 
+                Conference API, and the "GetSessions" operation which is 
+				currenly available on: http://conferenceapi.azurewebsites.net/?format=json
+
+				THIS SCRIPT IS PART OF LECTURE: 
+				Head first Azure API Management, Dev.bg, .NET Group
+
+	Date:		16.05.2018
+
+------------------------------------------------------------------------------
+	Written by Dimitar Mitev, Senior Developer
+
+	This script is intended only as a supplement to demos and lectures
+	given by Dimitar Mitev.  
+  
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF 
+	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED 
+	TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+============================================================================
+-->
+<policies>
+    <inbound>
+        <rate-limit-by-key calls="3" renewal-period="90" counter-key="@(context.Subscription.Id)" />
+        <base />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+        <choose>
+                <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Unlimited"))">
+                    <set-body>
+                        @{
+                            var response = context.Response.Body.As<JObject>();
+                            var collection = (JObject)response["collection"];
+                            foreach (var key in new [] {"version", "links", "href"}) {
+                                collection.Property(key)?.Remove();
+                            }
+
+                            return response.ToString();
+                        }
+                    </set-body>
+                </when>
+            </choose>
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

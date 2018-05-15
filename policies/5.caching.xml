@@ -1,0 +1,46 @@
+<!--
+============================================================================
+	File:		5 - caching.xml
+
+	Summary:	This XML demonstrates applied policy to add caching on the APIM layer
+                depending on a query parameter - "dayno". This code sample is supposed
+                to be used with the Conference API, and the "GetTopics" operation which is 
+				currenly available on: http://conferenceapi.azurewebsites.net/?format=json
+
+				THIS SCRIPT IS PART OF LECTURE: 
+				Head first Azure API Management, Dev.bg, .NET Group
+
+	Date:		16.05.2018
+
+------------------------------------------------------------------------------
+	Written by Dimitar Mitev, Senior Developer
+
+	This script is intended only as a supplement to demos and lectures
+	given by Dimitar Mitev.  
+  
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF 
+	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED 
+	TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+============================================================================
+-->
+<policies>
+    <inbound>
+        <base />
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public">
+            <vary-by-header>Accept</vary-by-header>
+            <vary-by-header>Accept-Charset</vary-by-header>
+            <vary-by-query-parameter>dayno</vary-by-query-parameter>
+        </cache-lookup>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+        <cache-store duration="120" />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

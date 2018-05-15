@@ -1,0 +1,41 @@
+<!--
+============================================================================
+	File:		2 - transform-response.xml
+
+	Summary:	This XML demonstrates applied outbound policy to transform the 
+				response using the find-and-replace. This code sample
+				is supposed to be used with the Conference API, which is 
+				currenly available on: http://conferenceapi.azurewebsites.net/?format=json
+
+				THIS SCRIPT IS PART OF LECTURE: 
+				Head first Azure API Management, Dev.bg, .NET Group
+
+	Date:		16.05.2018
+
+------------------------------------------------------------------------------
+	Written by Dimitar Mitev, Senior Developer
+
+	This script is intended only as a supplement to demos and lectures
+	given by Dimitar Mitev.  
+  
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF 
+	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED 
+	TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+============================================================================
+-->
+<policies>
+    <inbound>
+        <base />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://this-is-transformed.net/conference"/>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

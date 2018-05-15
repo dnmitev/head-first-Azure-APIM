@@ -1,0 +1,42 @@
+<!--
+============================================================================
+	File:		1 - remove-aspnet-header.xml
+
+	Summary:	This XML demonstrates applied outbound policy to remove the
+	            ASP.NET headers which are provided by default. This code sample
+				is supposed to be used with the Conference API, which is 
+				currenly available on: http://conferenceapi.azurewebsites.net/?format=json
+
+				THIS SCRIPT IS PART OF LECTURE: 
+				Head first Azure API Management, Dev.bg, .NET Group
+
+	Date:		16.05.2018
+
+------------------------------------------------------------------------------
+	Written by Dimitar Mitev, Senior Developer
+
+	This script is intended only as a supplement to demos and lectures
+	given by Dimitar Mitev.  
+  
+	THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF 
+	ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED 
+	TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+	PARTICULAR PURPOSE.
+============================================================================
+-->
+<policies>
+    <inbound>
+        <base />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
