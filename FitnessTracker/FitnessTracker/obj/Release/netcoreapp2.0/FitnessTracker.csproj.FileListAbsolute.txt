@@ -1,0 +1,11 @@
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\bin\Release\netcoreapp2.0\FitnessTracker.deps.json
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\bin\Release\netcoreapp2.0\FitnessTracker.runtimeconfig.json
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\bin\Release\netcoreapp2.0\FitnessTracker.runtimeconfig.dev.json
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\bin\Release\netcoreapp2.0\FitnessTracker.dll
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\bin\Release\netcoreapp2.0\FitnessTracker.pdb
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.csprojAssemblyReference.cache
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.csproj.CoreCompileInputs.cache
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.AssemblyInfoInputs.cache
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.AssemblyInfo.cs
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.dll
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker\obj\Release\netcoreapp2.0\FitnessTracker.pdb

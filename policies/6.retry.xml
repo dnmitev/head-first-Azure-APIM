@@ -1,11 +1,14 @@
 <!--
 ============================================================================
-	File:		3 - rate-limit.xml
+	File:		6 - retry.xml
 
-	Summary:	This XML demonstrates applied inbound policy to limit the rate of
-                the calls and appying renewal period. This code sample
-				is supposed to be used with the Conference API, which is 
-				currenly available on: http://conferenceapi.azurewebsites.net/?format=json
+	Summary:	This XML demonstrates applied policy for using the APIM to retry a
+                call which might fail. The backend produces an exception whenver
+                the current time has seconds dividable by three. The retry policy
+                has been setup exponential without immediate first retry.
+                This code sample is supposed to be used with the Demo API, and 
+                the "GetDate_RandomException" operation which is currenly available on:
+                https://fitnesstracker20180516110516.azurewebsites.net/swagger/v1/swagger.json
 
 				THIS SCRIPT IS PART OF LECTURE: 
 				Head first Azure API Management, Dev.bg, .NET Group
@@ -26,11 +29,17 @@
 -->
 <policies>
     <inbound>
-        <rate-limit-by-key calls="3" renewal-period="90" counter-key="@(context.Subscription.Id)" />
         <base />
     </inbound>
     <backend>
-        <base />
+        <retry condition="@(context.Response.StatusCode == 500)" 
+                count="5" 
+                interval="2" 
+                max-interval="100" 
+                delta="5" 
+                first-fast-retry="true">
+            <forward-request timeout="30" />
+        </retry>
     </backend>
     <outbound>
         <base />

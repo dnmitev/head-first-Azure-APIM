@@ -1,0 +1,5 @@
+C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=FitnessTracker
+--content-root=C:\Users\dimitar.mitev\Documents\head-first-Azure-APIM\FitnessTracker\FitnessTracker
+--file=

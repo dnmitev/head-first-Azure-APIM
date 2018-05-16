@@ -1,6 +1,6 @@
 <!--
 ============================================================================
-	File:		5 - caching.xml
+	File:		7 - send-request.xml
 
 	Summary:	This XML demonstrates applied policy for sending a request. The URL is
                 is taken out from the Named Values section and has to be stored with key
@@ -15,7 +15,7 @@
 	Date:		16.05.2018
 
 ------------------------------------------------------------------------------
-	Written by Dimitar Mitev, Senior Developer
+	Written by Dimitar Mitev, Senior Developer @ BULPROS
 
 	This script is intended only as a supplement to demos and lectures
 	given by Dimitar Mitev.  
